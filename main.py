@@ -1,79 +1,81 @@
-def analyze_countries(data, filter_func, transform_func):
-    """
-    Analysiert eine Liste von Länderdaten. Verwendet 'filter_func' zum Filtern und 'transform_func' zum Transformieren der Länderdaten.
-
-    Args:
-    - data: Liste von Ländern als Dictionaries
-    - filter_func: Funktion zum Filtern der Länder
-    - transform_func: Funktion zum Transformieren der Länderdaten
-
-    Returns:
-    - Liste von transformierten Länderdaten
-    """
-    # TODO: Implementiere die Funktion hier
-    pass
-
+import json
 
 def filter_european_countries(country):
     """
-    Filtert europäische Länder aus der Liste.
+    Filter European countries from the list.
 
     Args:
-    - country: Ein Dictionary, das ein Land repräsentiert
+    - country: A dictionary representing a country
 
     Returns:
-    - True, wenn das Land in Europa liegt, sonst False
+    - True if the country is in Europe, otherwise False
     """
-    # TODO: Implementiere die Funktion hier
-    pass
+    return country['region'] == 'Europe'
 
 
 def filter_large_population_countries(country):
     """
-    Filtert Länder mit einer Bevölkerung von mehr als 10 Millionen.
+    Filter countries with a population of more than 10 million.
 
     Args:
-    - country: Ein Dictionary, das ein Land repräsentiert
+    - country: A dictionary representing a country
 
     Returns:
-    - True, wenn das Land eine Bevölkerung von mehr als 10 Millionen hat, sonst False
+    - True if the country has a population of more than 10 million, otherwise False
     """
-    # TODO: Implementiere die Funktion hier
-    pass
+    return country['population'] > 10000000
 
 
 def transform_to_name_and_capital(country):
     """
-    Transformiert das Länder-Dictionary, sodass nur der Name und die Hauptstadt zurückgegeben werden.
+    Transform the country dictionary so that only the name and the capital are returned.
 
     Args:
-    - country: Ein Dictionary, das ein Land repräsentiert
+    - country: A dictionary representing a country
 
     Returns:
-    - Ein Dictionary mit dem Namen und der Hauptstadt des Landes
+    - A dictionary with the name and the capital of the country
     """
-    # TODO: Implementiere die Funktion hier
-    pass
+    return {'name': country['name'], 'capital': country['capital']}
 
 
 def transform_to_name_and_area(country):
     """
-    Transformiert das Länder-Dictionary, sodass nur der Name und die Fläche zurückgegeben werden.
+    Transform the country dictionary so that only the name and the area are returned.
 
     Args:
-    - country: Ein Dictionary, das ein Land repräsentiert
+    - country: A dictionary representing a country
 
     Returns:
-    - Ein Dictionary mit dem Namen und der Fläche des Landes
+    - A dictionary with the name and the area of the country
     """
-    # TODO: Implementiere die Funktion hier
-    pass
+    return {'name': country['name'], 'area': country['area']}
+
+
+def analyze_countries(data, filter_func, transform_func):
+    """
+    Analyze a list of country data. Uses 'filter_func' to filter and 'transform_func' to transform the country data.
+
+    Args:
+    - data: List of countries as dictionaries
+    - filter_func: Function to filter the countries
+    - transform_func: Function to transform the country data
+
+    Returns:
+    - List of transformed country data
+    """
+    return [transform_func(country) for country in data if filter_func(country)]
 
 
 if __name__ == '__main__':
     """ Hauptfunktion zum Ausführen des Programms """
     # TODO: JSON-Datei (countries_data.json) öffnen und Daten laden
     countries_data = None
+    try:
+        with open('countries_data.json', 'r', encoding='utf-8') as file:
+            countries_data = json.load(file)
+    except FileNotFoundError:
+        print("Datei nicht gefunden!")
 
     # Europäische Länder filtern und nach Name und Hauptstadt transformieren
     european_countries = analyze_countries(countries_data, filter_european_countries, transform_to_name_and_capital)
