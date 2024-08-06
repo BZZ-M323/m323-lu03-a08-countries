@@ -1,0 +1,32 @@
+[
+  {
+    "name": "test_analyze_countries",
+    "function": "test_analyze_countries",
+    "timeout": 10,
+    "points": 1
+  },
+  {
+    "name": "test_filter_european_countries",
+    "function": "test_filter_european_countries",
+    "timeout": 10,
+    "points": 1
+  },
+  {
+    "name": "test_filter_large_population_countries",
+    "function": "test_filter_large_population_countries",
+    "timeout": 10,
+    "points": 1
+  },
+  {
+    "name": "test_transform_to_name_and_area",
+    "function": "test_transform_to_name_and_area",
+    "timeout": 10,
+    "points": 1
+  },
+  {
+    "name": "test_transform_to_name_and_capital",
+    "function": "test_transform_to_name_and_capital",
+    "timeout": 10,
+    "points": 1
+  }
+]
