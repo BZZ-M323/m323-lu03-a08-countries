@@ -1,19 +1,3 @@
-def analyze_countries(data, filter_func, transform_func):
-    """
-    Analysiert eine Liste von Länderdaten. Verwendet 'filter_func' zum Filtern und 'transform_func' zum Transformieren der Länderdaten.
-
-    Args:
-    - data: Liste von Ländern als Dictionaries
-    - filter_func: Funktion zum Filtern der Länder
-    - transform_func: Funktion zum Transformieren der Länderdaten
-
-    Returns:
-    - Liste von transformierten Länderdaten
-    """
-    # TODO: Implementiere die Funktion hier
-    pass
-
-
 def filter_european_countries(country):
     """
     Filtert europäische Länder aus der Liste.
@@ -68,6 +52,21 @@ def transform_to_name_and_area(country):
     """
     # TODO: Implementiere die Funktion hier
     pass
+
+
+def analyze_countries(data, filter_func, transform_func):
+    """
+    Analysiert eine Liste von Länderdaten. Verwendet 'filter_func' zum Filtern und 'transform_func' zum Transformieren der Länderdaten.
+
+    Args:
+    - data: Liste von Ländern als Dictionaries
+    - filter_func: Funktion zum Filtern der Länder
+    - transform_func: Funktion zum Transformieren der Länderdaten
+
+    Returns:
+    - Liste von transformierten Länderdaten
+    """
+    return [transform_func(country) for country in data if filter_func(country)]
 
 
 if __name__ == '__main__':
