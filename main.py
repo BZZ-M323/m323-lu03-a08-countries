@@ -1,5 +1,6 @@
 import json
 
+
 def filter_european_countries(country):
     """
     Filter European countries from the list.
@@ -68,20 +69,26 @@ def analyze_countries(data, filter_func, transform_func):
 
 
 if __name__ == '__main__':
-    """ Hauptfunktion zum Ausführen des Programms """
+    """Hauptfunktion zum Ausführen des Programms"""
     # TODO: JSON-Datei (countries_data.json) öffnen und Daten laden
     countries_data = None
     try:
         with open('countries_data.json', 'r', encoding='utf-8') as file:
             countries_data = json.load(file)
     except FileNotFoundError:
-        print("Datei nicht gefunden!")
+        print('Datei nicht gefunden!')
 
     # Europäische Länder filtern und nach Name und Hauptstadt transformieren
-    european_countries = analyze_countries(countries_data, filter_european_countries, transform_to_name_and_capital)
+    european_countries = analyze_countries(
+        countries_data, filter_european_countries, transform_to_name_and_capital
+    )
     print('Europäische Länder (Name und Hauptstadt):', european_countries)
 
     # Länder mit mehr als 10 Millionen Einwohnern filtern und nach Name und Fläche transformieren
-    large_population_countries = analyze_countries(countries_data, filter_large_population_countries,
-                                                   transform_to_name_and_area)
-    print('Länder mit mehr als 10 Millionen Einwohnern (Name und Fläche):', large_population_countries)
+    large_population_countries = analyze_countries(
+        countries_data, filter_large_population_countries, transform_to_name_and_area
+    )
+    print(
+        'Länder mit mehr als 10 Millionen Einwohnern (Name und Fläche):',
+        large_population_countries,
+    )
