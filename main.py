@@ -55,10 +55,10 @@ def transform_to_name_and_area(country):
 
 
 def analyze_countries(data, filter_func, transform_func):
-    """ 
+    """
     Analysiert eine Liste von Länderdaten. Verwendet 'filter_func' zum Filtern und 'transform_func' zum Transformieren der Länderdaten.
     Diese Funktion wendet transform_func auf jedes Element von Data das den kriterien in filter_func entspricht und gibt diese Liste dann zurück.
-    
+
     Args:
     - data: Liste von Ländern als Dictionaries
     - filter_func: Funktion zum Filtern der Länder
@@ -72,15 +72,21 @@ def analyze_countries(data, filter_func, transform_func):
 
 
 if __name__ == '__main__':
-    """ Hauptfunktion zum Ausführen des Programms """
+    """Hauptfunktion zum Ausführen des Programms"""
     # TODO: JSON-Datei (countries_data.json) öffnen und Daten laden
     countries_data = None
 
     # Europäische Länder filtern und nach Name und Hauptstadt transformieren
-    european_countries = analyze_countries(countries_data, filter_european_countries, transform_to_name_and_capital)
+    european_countries = analyze_countries(
+        countries_data, filter_european_countries, transform_to_name_and_capital
+    )
     print('Europäische Länder (Name und Hauptstadt):', european_countries)
 
     # Länder mit mehr als 10 Millionen Einwohnern filtern und nach Name und Fläche transformieren
-    large_population_countries = analyze_countries(countries_data, filter_large_population_countries,
-                                                   transform_to_name_and_area)
-    print('Länder mit mehr als 10 Millionen Einwohnern (Name und Fläche):', large_population_countries)
+    large_population_countries = analyze_countries(
+        countries_data, filter_large_population_countries, transform_to_name_and_area
+    )
+    print(
+        'Länder mit mehr als 10 Millionen Einwohnern (Name und Fläche):',
+        large_population_countries,
+    )
